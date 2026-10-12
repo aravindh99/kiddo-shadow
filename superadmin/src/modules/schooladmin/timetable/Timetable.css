@@ -1,0 +1,311 @@
+/* ================= TIMETABLE MODULE - SCI-FI ANALYTICAL OVERHAUL ================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+.timetable-page {
+  padding: 32px;
+  background-color: var(--page-bg);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FILTERS */
+.timetable-filters {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.filter-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.filter-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* TABS */
+.day-selector-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--p-scan-line);
+  padding: 6px;
+  border-radius: 12px;
+  width: fit-content;
+  margin-bottom: 24px;
+  border: 1px solid var(--scifi-border);
+}
+
+.day-tab-btn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.day-tab-btn.active {
+  background: var(--p-accent);
+  color: white;
+  box-shadow: 0 0 15px var(--p-accent-glow);
+}
+
+/* SCHEDULE VIEW */
+.schedule-view-area {
+  max-width: 900px;
+}
+
+.schedule-day-column {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.day-column-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--p-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--scifi-border);
+}
+
+/* PERIOD CARDS */
+.period-card {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.period-card.break {
+  border-left: 4px solid #f97316 !important;
+  background: rgba(249, 115, 22, 0.05) !important;
+}
+
+/* MODALS */
+.premium-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.premium-modal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--p-accent);
+  border-radius: 24px;
+  width: 95vw;
+  max-width: 1400px;
+  /* FULL BOX SHOW */
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(34, 211, 238, 0.2);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header-section {
+  padding: 32px 32px 24px 32px;
+  border-bottom: 1px solid var(--scifi-border);
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entries-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+/* TABLE-LIKE GRID FOR ENTRIES */
+.entry-row-premium {
+  background: var(--p-scan-line);
+  border: 1px solid var(--scifi-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.entry-row-premium:hover {
+  border-color: var(--p-accent);
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.entry-grid-minimal {
+  display: grid;
+  grid-template-columns: 100px 100px 140px 1fr;
+  /* Time | Time | Type | Content */
+  gap: 24px;
+  align-items: center;
+  flex: 1;
+}
+
+.minimal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.minimal-field .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--p-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.premium-input-minimal {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid var(--scifi-border) !important;
+  border-radius: 8px !important;
+  height: 44px !important;
+  color: var(--text-main) !important;
+  font-family: 'Space Mono', monospace !important;
+  padding: 0 16px !important;
+  font-size: 0.9rem !important;
+  transition: all 0.2s !important;
+}
+
+.premium-input-minimal:focus {
+  border-color: var(--p-accent) !important;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.1) !important;
+}
+
+.add-period-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px dashed var(--p-accent);
+  background: transparent;
+  color: var(--p-accent);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.add-period-btn:hover {
+  background: var(--p-accent-glow);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--scifi-border);
+}
+
+@media (max-width: 1024px) {
+  .timetable-page {
+    padding: 20px;
+  }
+
+  .premium-command-bar {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .timetable-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ROW ACTIONS */
+.row-actions-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 16px;
+  border-left: 1px solid var(--scifi-border);
+}
+
+.break-toggle-minimal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.break-toggle-minimal input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--p-accent);
+}
+
+.remove-row-minimal {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-row-minimal:hover {
+  background: #ef4444;
+  color: white;
+}
+
+.modal-footer {
+  padding: 24px 32px;
+  background: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid var(--scifi-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

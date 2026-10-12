@@ -1,0 +1,45 @@
+name: Deploy Kiddo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            set -eu
+
+            cd /var/www/kiddo-project
+            git fetch origin main
+            git reset --hard origin/main
+
+            cd /var/www/kiddo-project/backend
+            npm install
+
+            cd /var/www/kiddo-project/pwa
+            npm ci
+            VITE_API_BASE_URL=https://kiddo.xtown.in/api VITE_SOCKET_URL=https://kiddo.xtown.in npm run build
+
+            chmod -R a+rX dist
+
+            cd /var/www/kiddo-project/backend
+            pm2 delete kiddo-api || true
+            PORT=3000 pm2 start server.js --name kiddo-api
+            pm2 save
+
+            curl --fail --silent --show-error --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:3000/ -o /dev/null

@@ -1,0 +1,230 @@
+/* ================= SUBJECTS MODULE - SCI-FI ANALYTICAL OVERHAUL ================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+.subjects-page-wrapper {
+  padding: 32px;
+  background-color: var(--page-bg);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FILTER ROW */
+.subjects-filter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subjects-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.subjects-search-wrap input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.8rem;
+  width: 100%;
+  color: var(--text-main);
+}
+
+.subjects-view-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--p-scan-line);
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--scifi-border);
+}
+
+/* CARD GRID */
+.subjects-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.subject-card-premium {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subject-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--p-accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--scifi-border);
+}
+
+.card-details-box {
+  background: var(--p-scan-line);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--scifi-border);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-item .label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.detail-item .value {
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+.detail-item .value.status-active {
+  color: var(--p-accent);
+}
+
+.card-footer-actions {
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid var(--scifi-border);
+  padding-top: 20px;
+}
+
+.card-footer-actions button {
+  flex: 1;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.card-footer-actions .edit-btn {
+  background: var(--p-accent-glow);
+  color: var(--p-accent);
+  border: 1px solid var(--scifi-border);
+}
+
+/* MODALS */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container-premium {
+  background: var(--card-bg);
+  border: 1px solid var(--p-accent);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(34, 211, 238, 0.2);
+}
+
+.modal-head {
+  padding: 24px;
+  border-bottom: 1px solid var(--scifi-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-form-scroll {
+  padding: 24px;
+}
+
+.modal-input-premium {
+  width: 100%;
+  background: var(--p-scan-line);
+  border: 1px solid var(--scifi-border);
+  border-radius: 12px;
+  height: 48px;
+  padding: 0 16px;
+  color: var(--text-main);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.modal-input-premium:focus {
+  border-color: var(--p-accent);
+  outline: none;
+  box-shadow: 0 0 10px var(--p-accent-glow);
+}
+
+.modal-footer-premium {
+  padding: 0 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* PAGINATION FOOTER */
+.pagination-footer-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding: 16px 32px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--scifi-border);
+}
+
+.pagination-info {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .subjects-page-wrapper {
+    padding: 20px;
+  }
+
+  .premium-command-bar {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+}

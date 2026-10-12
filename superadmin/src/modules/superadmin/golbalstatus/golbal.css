@@ -1,0 +1,233 @@
+.global-stats-view {
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.global-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    gap: 1.5rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Premium Stat Boxes */
+.stats-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    background: white;
+    padding: 1.75rem;
+    border-radius: 28px;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.box-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.stat-box.purple .box-icon {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+.stat-box.green .box-icon {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.stat-box.blue .box-icon {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.stat-box.orange .box-icon {
+    background: linear-gradient(135deg, #ea580c, #f97316);
+}
+
+.box-content .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.box-content .value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.box-trend,
+.box-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Detail Cards */
+.global-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.distribution-card,
+.summary-list-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 28px;
+    border: 1px solid #f1f5f9;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.card-header-flex h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Distribution Items */
+.dist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dist-item .item-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.dist-item .item-main span {
+    font-weight: 600;
+    color: #475569;
+}
+
+.dist-item .item-main strong {
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+}
+
+.fill.green {
+    background: #10b981;
+}
+
+.fill.orange {
+    background: #f97316;
+}
+
+/* Mini Table */
+.mini-table-wrapper {
+    overflow-x: auto;
+}
+
+.mini-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mini-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mini-table td {
+    padding: 14px 0;
+    border-top: 1px solid #f8fafc;
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+.mini-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.mini-badge.active {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.mini-badge.inactive {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1280px) {
+    .stats-grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .global-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid-premium {
+        grid-template-columns: 1fr;
+    }
+}

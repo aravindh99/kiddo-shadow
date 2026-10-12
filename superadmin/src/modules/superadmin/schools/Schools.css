@@ -1,0 +1,805 @@
+/* ================= ROOT VARIABLES ================= */
+:root {
+  /* Corporate Theme (Matching Dashboard) */
+  --bg-page: #f8fafc;
+  /* Slate 50 */
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  /* Slate 900 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+  --primary: #0f172a;
+  /* Corporate Blue/Black */
+  --primary-hover: #1e293b;
+  --accent: #3b82f6;
+  /* Blue 500 */
+  --accent-light: #eff6ff;
+  --border-subtle: #e2e8f0;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ================= PAGE ================= */
+.schools-page {
+  padding: 32px 40px;
+  background: var(--bg-page);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  /* Full Screen */
+  font-family: var(--font-main);
+  color: var(--text-main);
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+.schools-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  animation: slideDown 0.6s ease-out;
+}
+
+.schools-top h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.schools-top p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ================= CUSTOM MODAL (Dark Premium) ================= */
+.custom-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.custom-modal-content {
+  background: #1e293b;
+  /* Slate 800 - Dark */
+  padding: 32px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideUp 0.3s ease-out;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.custom-modal-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.custom-modal-content p {
+  color: #94a3b8;
+  /* Slate 400 */
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.custom-modal-content p strong {
+  color: #e2e8f0;
+}
+
+.modal-input {
+  width: 100%;
+  background: #0f172a;
+  /* Slate 900 */
+  border: 1px solid #334155;
+  color: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.modal-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-btn {
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.modal-btn.cancel {
+  background: #334155;
+  color: white;
+}
+
+.modal-btn.cancel:hover {
+  background: #475569;
+}
+
+.modal-btn.update {
+  background: #22c55e;
+  /* Green */
+  color: #052e16;
+}
+
+.modal-btn.update:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* Fix Create School Button Visibility */
+.school-form button[type="submit"] {
+  width: 100%;
+  margin-top: 24px;
+  background: var(--primary);
+  color: white;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.school-form button[type="submit"]:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.school-form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fix Sheet scrolling */
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.max-h-screen {
+  max-height: 100vh;
+}
+
+/* ================= ACTIONS ================= */
+.schools-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Search */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+  width: 300px;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  width: 100%;
+  color: var(--text-main);
+}
+
+.search-box svg {
+  color: var(--text-muted);
+}
+
+/* Status Filter */
+.status-filter {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.status-filter:hover {
+  border-color: #cbd5e1;
+}
+
+/* "Add School" Button (Targeting Shadcn Button via generic selector context if possible, usually generic classes in Schools.jsx are minimal but let's try to target button inside SheetTrigger) */
+.schools-actions button {
+  background-color: var(--primary);
+  color: white;
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+
+.schools-actions button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ================= TABLE ================= */
+.schools-table-wrapper {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  /* For rounded corners */
+  animation: slideUp 0.8s ease-out;
+
+  /* Scrollable Logic */
+  max-height: calc(100vh - 200px);
+  /* Fill remaining space */
+  overflow-y: auto;
+  position: relative;
+}
+
+.schools-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Sticky Header */
+.schools-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f8fafc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  /* Separator shadow */
+}
+
+.schools-table th {
+  text-align: left;
+  padding: 16px 24px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+  background-clip: padding-box;
+  /* Fix for sticky border overlap issues sometimes */
+}
+
+.schools-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.schools-table tr:hover td {
+  background: #f8fafc;
+}
+
+/* ================= SCHOOL CELL ================= */
+.school-cell {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.school-logo-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.school-logo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 10;
+  background: white;
+  border: 1px solid var(--border-subtle);
+}
+
+.logo-fallback {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #0369a1;
+  /* Sky 700 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 1px solid #bfdbfe;
+}
+
+.school-cell strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.school-cell .muted {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ================= STATUS ================= */
+.status-select {
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border-subtle);
+  background: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+/* Dynamic coloring for select based on value is hard without JS classes, 
+   but we can style the base to look clean. 
+   Ideally, we would apply classes like .status-pill in JS, but constraints say no JS changes.
+   We'll make the select look like a polished pill. */
+.status-select:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+/* ================= ACTIONS col ================= */
+.link-btn {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  margin-right: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.link-btn:hover {
+  background: var(--accent-light);
+  text-decoration: none;
+}
+
+.link-btn.danger {
+  color: #ef4444;
+}
+
+.link-btn.danger:hover {
+  background: #fef2f2;
+}
+
+/* Reset Password Button */
+.schools-table td button[variant="outline"] {
+  /* Targeting the generic button used for reset */
+  border: 1px solid var(--border-subtle);
+  background: white;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.schools-table td button[variant="outline"]:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ================= PAGINATION ================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* Align right like Pro tables */
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.pagination button {
+  background: white;
+  border: 1px solid var(--border-subtle);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: var(--text-muted);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MODAL/FORM STYLES (Professional Corporate) ================= */
+.school-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.school-form>div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.school-form label {
+  font-size: 0.875rem;
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 0;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+.school-form input,
+.school-form input[type="text"],
+.school-form input[type="email"],
+.school-form input[type="file"] {
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.95rem;
+  width: 100%;
+  background: white;
+  transition: all 0.2s ease;
+  font-family: var(--font-main);
+}
+
+.school-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.school-form input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ================= LOGO UPLOAD ================= */
+.logo-upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.logo-file-input {
+  cursor: pointer;
+}
+
+.upload-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--accent-light);
+  border-radius: var(--radius-md);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.upload-progress .spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-preview {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--border-subtle);
+}
+
+.logo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-logo {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-logo:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+/* ================= ADMIN STATUS TOGGLE ================= */
+.admin-status-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+.toggle-slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch input:checked+.toggle-slider {
+  background-color: #22c55e;
+}
+
+.toggle-switch input:checked+.toggle-slider:before {
+  transform: translateX(24px);
+}
+
+.toggle-switch:hover .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ================= NEW COLUMNS & POLISH ================= */
+.reference-badge {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
+}
+
+.student-count-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.count-number {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.count-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.success-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #059669;
+  /* Emerald 600 */
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Table Header Polish */
+.schools-table th {
+  background: white;
+  color: #475569;
+  font-weight: 600;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+/* Table Row Polish */
+.schools-table tr {
+  transition: all 0.2s ease;
+}
+
+.schools-table tr:hover {
+  background: #fcfdfe !important;
+  transform: scale(1.002);
+}
+
+.schools-table td {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Success Modal Alignment Fixes */
+.success-modal-message p {
+  line-height: 1.6;
+}

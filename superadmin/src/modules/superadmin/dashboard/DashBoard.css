@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-main: 'Inter', sans-serif;
+  --font-head: 'Outfit', sans-serif;
+
+  /* Corporate Palette */
+  --primary: #0f172a;
+  --primary-light: #1e293b;
+  --accent: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-hover: #4f46e5;
+
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  --border-subtle: #e2e8f0;
+
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+}
+
+.dashboard-content {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  font-family: var(--font-main);
+  color: var(--text-main);
+  box-sizing: border-box;
+}
+
+/* Hero Section with Mesh Gradient */
+.hero-mesh-gradient {
+  background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+    #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content h1 {
+  font-family: var(--font-head);
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+.system-ticker {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* KPI Cards Layout */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.kpi-icon-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpi-icon.blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.kpi-icon.purple {
+  background: #faf5ff;
+  color: #a855f7;
+}
+
+.kpi-icon.emerald {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.kpi-icon.orange {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.kpi-data h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin: 0 0 4px 0;
+}
+
+.kpi-data .value {
+  font-family: var(--font-head);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+}
+
+.kpi-trend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Charts Section */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.chart-container {
+  background: var(--bg-card);
+  padding: 32px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.chart-header h3 {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Table Section Wrap */
+.institutions-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.section-title-bar {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+}
+
+.section-title-bar h3 {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.manage-btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.manage-btn:hover {
+  background: var(--accent);
+  transform: scale(1.02);
+}
+
+.excel-style-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.excel-style-table th {
+  background: #f8fafc;
+  padding: 16px 32px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.excel-style-table td {
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.9375rem;
+}
+
+.excel-style-table tr:hover td {
+  background: #f1f5f9;
+}
+
+.school-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.school-logo-frame {
+  width: 40px;
+  height: 40px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.school-details strong {
+  display: block;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.school-details span {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.pending {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.status-badge.suspended {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1280px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-content {
+    padding: 20px;
+  }
+
+  .hero-mesh-gradient {
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}

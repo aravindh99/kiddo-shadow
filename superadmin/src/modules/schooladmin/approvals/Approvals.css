@@ -1,0 +1,201 @@
+/* ================= APPROVALS MODULE - SCI-FI ANALYTICAL OVERHAUL ================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+.approvals-page-premium {
+  padding: 32px;
+  background-color: var(--page-bg);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABS SYSTEM */
+.premium-tabs {
+  display: flex;
+  background: var(--p-scan-line);
+  padding: 6px;
+  border-radius: 12px;
+  gap: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+  width: fit-content;
+  border: 1px solid var(--scifi-border);
+}
+
+.premium-tab-btn {
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+}
+
+.premium-tab-btn.active {
+  background: var(--p-accent);
+  color: white;
+  box-shadow: 0 0 15px var(--p-accent-glow);
+}
+
+.count-badge-pill {
+  padding: 1px 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-size: 0.65rem;
+}
+
+/* CARDS GRID */
+.approvals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.approval-premium-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-platinum {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info-box h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.user-info-box .sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* DETAILS STRIP */
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.detail-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+}
+
+/* REJECTION MODAL */
+.premium-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.premium-modal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--p-accent);
+  border-radius: 32px;
+  width: min(95%, 460px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(34, 211, 238, 0.2);
+}
+
+.modal-header-section {
+  padding: 32px;
+  border-bottom: 1px solid var(--scifi-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.announcement-form-premium {
+  padding: 32px;
+}
+
+.premium-input-minimal {
+  width: 100%;
+  background: var(--p-scan-line);
+  border: 1px solid var(--scifi-border);
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--text-main);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  resize: vertical;
+}
+
+.modal-footer-premium {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* EMPTY STATE */
+.empty-illustration-box {
+  background: var(--card-bg);
+  border: 1px solid var(--scifi-border);
+  border-radius: 32px;
+  padding: 80px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .approvals-page-premium {
+    padding: 20px;
+  }
+
+  .premium-command-bar {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .premium-tabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}

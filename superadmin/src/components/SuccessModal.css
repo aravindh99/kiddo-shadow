@@ -1,0 +1,136 @@
+/* ================= SUCCESS MODAL ================= */
+.success-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(12px);
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.success-modal-container {
+    background: white;
+    border-radius: 32px;
+    width: min(480px, 92%);
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-illustration {
+    width: 100%;
+    height: 160px;
+    background: #f8fafc;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.success-icon-bg {
+    width: 80px;
+    height: 80px;
+    background: #dcfce7;
+    color: #10b981;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.success-modal-container h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.success-modal-container p,
+.success-modal-message {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.success-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-premium-ok {
+    background: #1e1b4b;
+    color: white;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(30, 27, 75, 0.2);
+}
+
+.btn-premium-ok:hover {
+    background: #312e81;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(30, 27, 75, 0.3);
+}
+
+.btn-premium-ok:active {
+    transform: translateY(0);
+}
+
+.info-icon-small {
+    color: #94a3b8;
+    cursor: help;
+    transition: color 0.2s;
+}
+
+.info-icon-small:hover {
+    color: #64748b;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Security Theme Modifiers */
+.security-theme {
+    background: #fffafa;
+    /* Extremely subtle red tint */
+}
+
+.security-theme .success-icon-bg {
+    background: #fee2e2;
+    color: #ef4444;
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.2);
+}
