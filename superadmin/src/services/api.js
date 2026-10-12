@@ -1,9 +1,8 @@
 // api.js
 
-const BASE_URL = "";
-// const BASE_URL = (
-//   import.meta.env.VITE_API_URL || "https://schoolapi.xtown.in"
-// ).trim();
+const BASE_URL = (
+  import.meta.env.VITE_API_URL || ""
+).trim().replace(/\/$/, "");
 
 
 class GravityLink {
@@ -45,7 +44,8 @@ class GravityLink {
     }
 
     // Build URL
-    let url = `${BASE_URL}${endpoint}`;
+    const normalizedEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+    let url = BASE_URL ? `${BASE_URL}${normalizedEndpoint}` : normalizedEndpoint;
 
     // Query params support
     if (options.params && typeof options.params === "object") {

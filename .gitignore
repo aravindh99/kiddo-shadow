@@ -9,6 +9,7 @@ node_modules
 !.env.example
 !.env.sample
 !.env.template
+!.env.production
 *.local
 
 # Build & Output

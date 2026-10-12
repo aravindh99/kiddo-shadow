@@ -48,7 +48,7 @@ jobs:
             echo "🛡️ [4/5] Building Superadmin Frontend..."
             cd /var/www/kiddo-project/superadmin
             if [ -f package-lock.json ]; then npm ci; else npm install; fi
-            npm run build
+            VITE_API_URL=https://admin.kiddo.xtown.in npm run build
             chmod -R a+rX dist
 
             echo "🔄 [5/5] Reloading Caddy Web Server..."
