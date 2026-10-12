@@ -24,22 +24,34 @@ jobs:
           script: |
             set -eu
 
+            echo "🚀 [1/5] Syncing latest code on VPS..."
             cd /var/www/kiddo-project
             git fetch origin main
             git reset --hard origin/main
 
+            echo "📦 [2/5] Deploying Backend (API)..."
             cd /var/www/kiddo-project/backend
-            npm install
-
-            cd /var/www/kiddo-project/pwa
-            npm ci
-            VITE_API_BASE_URL=https://kiddo.xtown.in/api VITE_SOCKET_URL=https://kiddo.xtown.in npm run build
-
-            chmod -R a+rX dist
-
-            cd /var/www/kiddo-project/backend
+            if [ -f package-lock.json ]; then npm ci; else npm install; fi
             pm2 delete kiddo-api || true
             PORT=3000 pm2 start server.js --name kiddo-api
             pm2 save
 
+            echo "🩺 [Health Check] Verifying Backend API on port 3000..."
             curl --fail --silent --show-error --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:3000/ -o /dev/null
+
+            echo "🌐 [3/5] Building PWA Frontend..."
+            cd /var/www/kiddo-project/pwa
+            if [ -f package-lock.json ]; then npm ci; else npm install; fi
+            VITE_API_BASE_URL=https://kiddo.xtown.in/api VITE_SOCKET_URL=https://kiddo.xtown.in npm run build
+            chmod -R a+rX dist
+
+            echo "🛡️ [4/5] Building Superadmin Frontend..."
+            cd /var/www/kiddo-project/superadmin
+            if [ -f package-lock.json ]; then npm ci; else npm install; fi
+            npm run build
+            chmod -R a+rX dist
+
+            echo "🔄 [5/5] Reloading Caddy Web Server..."
+            systemctl reload caddy 2>/dev/null || true
+
+            echo "✅ Deployment completed successfully!"
