@@ -1,0 +1,5 @@
+node_modules
+.env
+rag_data
+books
+package-lock.json
